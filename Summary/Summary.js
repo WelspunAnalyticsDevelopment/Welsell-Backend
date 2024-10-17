@@ -85,22 +85,32 @@ router.get('/getPublishedData', (req, res) => {
       newList = [...newList, `'${item}'`]
     })
 
+
+
     if (req.query.teamLeader == 'DEBASHISH BAGG' || req.query.teamLeader == 'ANIL SANGALE' || req.query.teamLeader == 'VISHWAJEET SANKPAL' || req.query.teamLeader == 'SNEHAL SHAH') {
       query += `SELECT
       sp.[VERSION_NO] AS 'versionNo',
       sp.[UNIQUE_IDENTIFICATION_NO] AS 'UNIQUE IDENTIFICATION NO',
-      (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] + sp.[MARCH_(SALEABLE_UNITS)]) as 'Total Saleable Unit',
-      (sp.[APRIL_VALUE] + sp.[MAY_VALUE] + sp.[JUNE_VALUE] + sp.[JULY_VALUE] + sp.[AUG_VALUE] + sp.[SEPT_VALUE] + sp.[OCT_(VALUE)] + sp.[NOV_VALUE] + sp.[DEC_VALUE] + sp.[JAN_VALUE] + sp.[FEB_VALUE] + sp.[MAR_VALUE]) as 'Total Value' ,
-      (sp.[APRIL_USDN] + sp.[MAY_USDN] + sp.[JUNE_USDN] + sp.[JULY_USDN] + sp.[AUG_USDN] + sp.[SEPT_USDN] + sp.[OCTOBER_(USDN)] + sp.[NOV_USDN] + sp.[DEC_USDN] + sp.[JAN_USDN] + sp.[FEB_USDN] + sp.[MAR_USDN]) as 'Total USDN' ,
-      (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] +sp.[MARCH_(SALEABLE_UNITS)]) as 'Total PCS',
-      (sp.[APRIL_KGS] + sp.[MAY_KGS] + sp.[JUNE_KGS] + sp.[JULY_KGS] + sp.[AUG_KGS] + sp.[SEP_KGS] + sp.[OCT_KGS] + sp.[NOV_KGS] + sp.[DEC_KGS] + sp.[JAN_KGS] + sp.[FEB_KGS] + sp.[MAR_KGS]) as 'Total KGS',
-      (sp.[APRIL_(SQ_MTR)] + sp.[MAY_(SQ_MTS)] + sp.[JUNE_(SQ_MTS)] + sp.[JULY_(SQ_MTS)] + sp.[AUGUST_(SQ_MTS)] + sp.[SEP_SQ_MTS_] + sp.[OCT_SQ_MTS] + sp.[NOVEMBER_(SQ_MTS)] + sp.[DECEMBER_(SQ_MTS)] + sp.[JANUARY_(SQ_MTS)] + sp.[FEBRUARY(SQ_MTS)] + sp.[MARCH(SQ_MTS)]) as 'TOTAL SQR MTRS',
+      ss.[PLANT] AS 'PLANT',
+    ss.[PRODUCT_CAT] AS 'PRODUCT CAT',
+    ss.[PRODUCT_SUBCAT] AS 'PRODUCT SUBCAT',
+      ss.[SR_NO] AS 'SR NO',
+    ss.[REGION] AS 'REGION',
+    ss.[PROGRAM] AS 'PROGRAM',
+      ss.[PROGRAM_CODE__↑] AS 'PROGRAM CODE ↑',
+    ss.[END_CUSTOMER_CODE] AS 'END CUSTOMER CODE',
+      sp.[END_CUSTOMER_NAME] AS 'END CUSTOMER NAME',
+    ss.[MATCODE] AS 'MATCODE',
+    ss.[TEAM_LEADER] AS 'TEAM LEADER',
+    ss.[MATERIAL_DESCRIPTION] AS 'MATERIAL DESCRIPTION',
+      ss.[MERCHANT] AS 'MERCHANT',
+      ss.[PCS_IN_SET] AS 'PCS IN SET',
 
-      sp.[APRIL_KGS] AS 'APRIL KGS',
-      
-      sp.[APR_RATE_AS_PER_CURRENCY] AS 'APR RATE AS PER CURRENCY',
-      sp.[APR_(SALEABLE_UNITS)] AS 'APR (SALEABLE UNITS)',
+
+    sp.[APR_(SALEABLE_UNITS)] AS 'APR (SALEABLE UNITS)',
       (sp.[APR_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'APRIL PCS',
+    sp.[APR_RATE_AS_PER_CURRENCY] AS 'APR RATE AS PER CURRENCY',
+      sp.[APRIL_KGS] AS 'APRIL KGS',
       sp.[APRIL_USDN] AS 'APRIL USDN',
       sp.[APRIL_VALUE] AS 'APRIL VALUE',
       sp.[AUG_KGS] AS 'AUG KGS',
@@ -108,22 +118,77 @@ router.get('/getPublishedData', (req, res) => {
       ss.[APR_MTR] AS 'APR MTR',
       ss.[APRIL(TUFTING_KGS)] AS 'APRIL(TUFTING KGS)',
       
+
+    sp.[MAY_KGS] AS 'MAY KGS',
+      ss.[MAY_(SQ_MTS)] AS 'MAY (SQ MTS)',
+      (sp.[MAY_(SALEABLE_UNITS)]* ss.[NO_OF_PCS_IN_SET]) AS 'MAY(PCS)',
+      sp.[MAY_RATE_AS_PER_CURRENCY] AS 'MAY RATE AS PER CURRENCY',
+      sp.[MAY_(SALEABLE_UNITS)] AS 'MAY (SALEABLE UNITS)',
+      sp.[MAY_USDN] AS 'MAY USDN',
+      sp.[MAY_VALUE] AS 'MAY VALUE',
+
+
+    sp.[JUNE_KGS] AS 'JUNE KGS',
+      ss.[JUNE_(SQ_MTS)] AS 'JUNE (SQ MTS)',
+      ss.[JUNE_MTR] AS 'JUNE MTR',
+      (sp.[JUN_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JUNE(PCS)',
+      sp.[JUN_RATE_AS_PER_CURRENCY] AS 'JUN RATE AS PER CURRENCY',
+      sp.[JUN_(SALEABLE_UNITS)] AS 'JUN (SALEABLE UNITS)',
+      sp.[JUNE_USDN] AS 'JUNE USDN',
+      sp.[JUNE_VALUE] AS 'JUNE VALUE',
+
+
+    sp.[JULY_KGS] AS 'JULY KGS',
+      ss.[JULY_(SQ_MTS)] AS 'JULY (SQ MTS)',
+      ss.[JUL_MTR] AS 'JUL MTR',
+      (sp.[JULY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JULY(PCS)',
+      sp.[JUL_RATE_AS_PER_CURRENCY] AS 'JUL RATE AS PER CURRENCY',
+      sp.[JULY_(SALEABLE_UNITS)] AS 'JULY (SALEABLE UNITS)',
+      sp.[JULY_USDN] AS 'JULY USDN',
+      sp.[JULY_VALUE] AS 'JULY VALUE',
+
+
       sp.[AUG_RATE_AS_PER_CURRENCY] AS 'AUG RATE AS PER CURRENCY',
       sp.[AUGUST_(SALEABLE_UNITS)] AS 'AUGUST (SALEABLE UNITS)',
       ss.[AUGUST_(SQ_MTS)] AS 'AUGUST (SQ MTS)',
       ss.[AUG_MTR] AS 'AUG MTR',
       ss.[AUG_(TUFTING_KGS)] AS 'AUG (TUFTING KGS)',
-
       (sp.[AUGUST_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'AUGUST PCS',
-      
       sp.[AUG_USDN] AS 'AUG USDN',
       sp.[AUG_VALUE] AS 'AUG VALUE',
-      ss.[BILLING(WUSA/WUK/DIRECT)] AS 'BILLING(WUSA/WUK/DIRECT)',
-      ss.[BRAND_NAME] AS 'BRAND NAME',
-      ss.[BRAND_TYPE_:_OWN_/_RETAILER_LICENCE_/_WE] AS 'BRAND TYPE : OWN / RETAILER LICENCE / WE',
-      ss.[CHANNEL] AS 'CHANNEL',
-      sp.[DEC_KGS] AS 'DEC KGS',
-  
+      
+
+    sp.[SEP_KGS] AS 'SEP KGS',
+      ss.[SEP_SQ_MTS_] AS 'SEP SQ MTS ',
+      ss.[SEP_MTR] AS 'SEP MTR',
+      (sp.[SEP_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'SEP PCS',
+      sp.[SEP_RATE_AS_PER_CURRENCY] AS 'SEP RATE AS PER CURRENCY',
+      sp.[SEP_(SALEABLE_UNITS)] AS 'SEP (SALEABLE UNITS)',
+      sp.[SEPT_USDN] AS 'SEPT USDN',
+      sp.[SEPT_VALUE] AS 'SEPT VALUE',
+
+
+    sp.[OCT_KGS] AS 'OCT KGS',
+      ss.[OCT_SQ_MTS] AS 'OCT SQ MTS',
+      ss.[OCT_MTR] AS 'OCT MTR',
+      sp.[OCT_(SALEABLE_UNIT)] AS 'OCT (SALEABLE UNIT)',
+      sp.[OCT_RATE_AS_PER_CURRENCY] AS 'OCT RATE AS PER CURRENCY',
+      (sp.[OCT_(SALEABLE_UNIT)] * ss.[NO_OF_PCS_IN_SET]) AS 'OCTOBER(PCS)',
+      sp.[OCTOBER_(USDN)] AS 'OCTOBER (USDN)',
+      sp.[OCT_(VALUE)] AS 'OCT (VALUE)',
+
+
+    sp.[NOV_KGS] AS 'NOV KGS',
+      ss.[NOVEMBER_(SQ_MTS)] AS 'NOVEMBER (SQ MTS)',
+      ss.[NOV_MTR] AS 'NOV MTR',
+      (sp.[NOVEMBER_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'NOVEMBER(PCS)',
+      sp.[NOV_RATE_AS_PER_CURRENCY] AS 'NOV RATE AS PER CURRENCY',
+      sp.[NOVEMBER_(SALEABLE_UNITS)] AS 'NOVEMBER (SALEABLE UNITS)',
+      sp.[NOV_USDN] AS 'NOV USDN',
+      sp.[NOV_VALUE] AS 'NOV VALUE',
+
+
+    sp.[DEC_KGS] AS 'DEC KGS',
       (sp.[DECEMBER_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'DECEMBER PCS',
       ss.[DECEMBER(TOTAL_KGS)] AS 'DECEMBER(TOTAL KGS)',
       ss.[DECEMBER_(SQ_MTS)] AS 'DECEMBER (SQ MTS)',
@@ -132,14 +197,21 @@ router.get('/getPublishedData', (req, res) => {
       sp.[DECEMBER_(SALEABLE_UNITS)] AS 'DECEMBER (SALEABLE UNITS)',
       sp.[DEC_USDN] AS 'DEC USDN',
       sp.[DEC_VALUE] AS 'DEC VALUE',
-      ss.[DYEING/_WASHING] AS 'DYEING/ WASHING',
-      ss.[EMB(Y/_N)] AS 'EMB(Y/ N)',
-      ss.[END_CUSTOMER_CODE] AS 'END CUSTOMER CODE',
-      sp.[END_CUSTOMER_NAME] AS 'END CUSTOMER NAME',
-      ss.[ENQ_STATUS(LIKELY/MOST_LIKELY_/CONFIRME] AS 'ENQ STATUS(LIKELY/MOST LIKELY /CONFIRME)',
-      ss.[EXPORT/_DOMESTIC] AS 'EXPORT/ DOMESTIC',
-      sp.[FEB_KGS] AS 'FEB KGS',
 
+
+    sp.[JAN_KGS] AS 'JAN KGS',
+      ss.[JANUARY_(SQ_MTS)] AS 'JANUARY (SQ MTS)',
+      ss.[JAN_MTR] AS 'JAN MTR',
+      ss.[JANUARY(TUFTING_KGS)] AS 'JANUARY(TUFTING KGS)',
+      sp.[JAN_RATE_AS_PER_CURRENCY] AS 'JAN RATE AS PER CURRENCY',
+      sp.[JANUARY_(SALEABLE_UNITS)] AS 'JANUARY (SALEABLE UNITS)',
+      (sp.[JANUARY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JANUARY PCS',
+      sp.[JAN_USDN] AS 'JAN USDN',
+      sp.[JAN_VALUE] AS 'JAN VALUE',
+
+
+
+    sp.[FEB_KGS] AS 'FEB KGS',
       ss.[FEBRUARY(TOTAL_KGS)] AS 'FEBRUARY(TOTAL KGS)',
       ss.[FEBRUARY(SQ_MTS)] AS 'FEBRUARY(SQ MTS)',
       ss.[FEB_MTR] AS 'FEB MTR',
@@ -149,6 +221,30 @@ router.get('/getPublishedData', (req, res) => {
       (sp.[FEBRUARY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'FEBRUARY PCS',
       sp.[FEB_USDN] AS 'FEB USDN',
       sp.[FEB_VALUE] AS 'FEB VALUE',
+
+
+    sp.[MAR_KGS] AS 'MAR KGS',
+      ss.[MARCH(SQ_MTS)] AS 'MARCH(SQ MTS)',
+      ss.[MAR_MTR] AS 'MAR MTR',
+      sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH(PCS)',
+
+      sp.[MAR_RATE_AS_PER_CURRENCY] AS 'MAR RATE AS PER CURRENCY',
+      sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH (SALEABLE UNITS)',
+      sp.[MAR_USDN] AS 'MAR USDN',
+      sp.[MAR_VALUE] AS 'MAR VALUE',
+
+
+
+    ss.[BILLING(WUSA/WUK/DIRECT)] AS 'BILLING(WUSA/WUK/DIRECT)',
+      ss.[BRAND_NAME] AS 'BRAND NAME',
+      ss.[BRAND_TYPE_:_OWN_/_RETAILER_LICENCE_/_WE] AS 'BRAND TYPE : OWN / RETAILER LICENCE / WE',
+      ss.[CHANNEL] AS 'CHANNEL',
+      ss.[DYEING/_WASHING] AS 'DYEING/ WASHING',
+      ss.[EMB(Y/_N)] AS 'EMB(Y/ N)',
+    
+      ss.[ENQ_STATUS(LIKELY/MOST_LIKELY_/CONFIRME] AS 'ENQ STATUS(LIKELY/MOST LIKELY /CONFIRME)',
+      ss.[EXPORT/_DOMESTIC] AS 'EXPORT/ DOMESTIC',
+      
       ss.[GR._YARN_1] AS 'GR. YARN 1',
       ss.[GROUND_1_PLY] AS 'GROUND 1 PLY',
       ss.[GROUND_2_PLY] AS 'GROUND 2 PLY',
@@ -162,76 +258,17 @@ router.get('/getPublishedData', (req, res) => {
       
       ss.[INNOVATION_TYPE] AS 'INNOVATION TYPE',
       ss.[INNOVATION(YES/_NO)] AS 'INNOVATION(YES/ NO)',
-      sp.[JAN_KGS] AS 'JAN KGS',
-      ss.[JANUARY_(SQ_MTS)] AS 'JANUARY (SQ MTS)',
-      ss.[JAN_MTR] AS 'JAN MTR',
-      ss.[JANUARY(TUFTING_KGS)] AS 'JANUARY(TUFTING KGS)',
-      sp.[JAN_RATE_AS_PER_CURRENCY] AS 'JAN RATE AS PER CURRENCY',
-      sp.[JANUARY_(SALEABLE_UNITS)] AS 'JANUARY (SALEABLE UNITS)',
-      (sp.[JANUARY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JANUARY PCS',
-      sp.[JAN_USDN] AS 'JAN USDN',
-      sp.[JAN_VALUE] AS 'JAN VALUE',
-      sp.[JULY_KGS] AS 'JULY KGS',
-      ss.[JULY_(SQ_MTS)] AS 'JULY (SQ MTS)',
-      ss.[JUL_MTR] AS 'JUL MTR',
-      (sp.[JULY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JULY(PCS)',
-    
-      sp.[JUL_RATE_AS_PER_CURRENCY] AS 'JUL RATE AS PER CURRENCY',
-      sp.[JULY_(SALEABLE_UNITS)] AS 'JULY (SALEABLE UNITS)',
-      sp.[JULY_USDN] AS 'JULY USDN',
-      sp.[JULY_VALUE] AS 'JULY VALUE',
-      sp.[JUNE_KGS] AS 'JUNE KGS',
-      ss.[JUNE_(SQ_MTS)] AS 'JUNE (SQ MTS)',
-      ss.[JUNE_MTR] AS 'JUNE MTR',
-      (sp.[JUN_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JUNE(PCS)',
-     
-      sp.[JUN_RATE_AS_PER_CURRENCY] AS 'JUN RATE AS PER CURRENCY',
-      sp.[JUN_(SALEABLE_UNITS)] AS 'JUN (SALEABLE UNITS)',
-      sp.[JUNE_USDN] AS 'JUNE USDN',
-      sp.[JUNE_VALUE] AS 'JUNE VALUE',
-    
+      
+      
+      
+
       ss.[LIKE_TO_LIKE/NEW] AS 'LIKE TO LIKE/NEW',
       ss.[LOGO] AS 'LOGO',
       ss.[LOOM] AS 'LOOM',
       
-      sp.[MAR_KGS] AS 'MAR KGS',
-      ss.[MARCH(SQ_MTS)] AS 'MARCH(SQ MTS)',
-      ss.[MAR_MTR] AS 'MAR MTR',
-      sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH(PCS)',
-  
-      sp.[MAR_RATE_AS_PER_CURRENCY] AS 'MAR RATE AS PER CURRENCY',
-      sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH (SALEABLE UNITS)',
-      sp.[MAR_USDN] AS 'MAR USDN',
-      sp.[MAR_VALUE] AS 'MAR VALUE',
-      ss.[MATCODE] AS 'MATCODE',
-      ss.[MATERIAL_DESCRIPTION] AS 'MATERIAL DESCRIPTION',
-      sp.[MAY_KGS] AS 'MAY KGS',
-      ss.[MAY_(SQ_MTS)] AS 'MAY (SQ MTS)',
-      (sp.[MAY_(SALEABLE_UNITS)]* ss.[NO_OF_PCS_IN_SET]) AS 'MAY(PCS)',
-  
-      sp.[MAY_RATE_AS_PER_CURRENCY] AS 'MAY RATE AS PER CURRENCY',
-      sp.[MAY_(SALEABLE_UNITS)] AS 'MAY (SALEABLE UNITS)',
-      sp.[MAY_USDN] AS 'MAY USDN',
-      sp.[MAY_VALUE] AS 'MAY VALUE',
-      ss.[MERCHANT] AS 'MERCHANT',
-      sp.[NOV_KGS] AS 'NOV KGS',
-      ss.[NOVEMBER_(SQ_MTS)] AS 'NOVEMBER (SQ MTS)',
-      ss.[NOV_MTR] AS 'NOV MTR',
-      (sp.[NOVEMBER_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'NOVEMBER(PCS)',
       
-      sp.[NOV_RATE_AS_PER_CURRENCY] AS 'NOV RATE AS PER CURRENCY',
-      sp.[NOVEMBER_(SALEABLE_UNITS)] AS 'NOVEMBER (SALEABLE UNITS)',
-      sp.[NOV_USDN] AS 'NOV USDN',
-      sp.[NOV_VALUE] AS 'NOV VALUE',
-      sp.[OCT_KGS] AS 'OCT KGS',
-      ss.[OCT_SQ_MTS] AS 'OCT SQ MTS',
-      ss.[OCT_MTR] AS 'OCT MTR',
-      sp.[OCT_(SALEABLE_UNIT)] AS 'OCT (SALEABLE UNIT)',
-      sp.[OCT_RATE_AS_PER_CURRENCY] AS 'OCT RATE AS PER CURRENCY',
-      (sp.[OCT_(SALEABLE_UNIT)] * ss.[NO_OF_PCS_IN_SET]) AS 'OCTOBER(PCS)',
-      sp.[OCTOBER_(USDN)] AS 'OCTOBER (USDN)',
-      sp.[OCT_(VALUE)] AS 'OCT (VALUE)',
-      ss.[PCS_IN_SET] AS 'PCS IN SET',
+
+      
       ss.[PILE_1_PLY] AS 'PILE 1 PLY',
       ss.[PILE_COUNT_1] AS 'PILE COUNT 1',
       ss.[PILE_COUNT_2] AS 'PILE COUNT 2',
@@ -241,28 +278,20 @@ router.get('/getPublishedData', (req, res) => {
       ss.[PILE_YARN_GMS] AS 'PILE YARN GMS',
       ss.[PILE_YN._1] AS 'PILE YN. 1',
       ss.[PIVOT_KEY] AS 'PIVOT KEY',
-      ss.[PROGRAM] AS 'PROGRAM',
-      ss.[PROGRAM_CODE__↑] AS 'PROGRAM CODE ↑',
+
       ss.[PROGRAM_CODE_UPDATED] AS 'PROGRAM CODE UPDATED',
-      ss.[REGION] AS 'REGION',
+
       ss.[REPL_/_PROMO] AS 'REPL / PROMO',
       ss.[REMARKS] AS 'REMARKS',
       ss.[SECONDARYBACKING(GSM)] AS 'SECONDARYBACKING(GSM)',
       ss.[SELLING_CURRENCY] AS 'SELLING CURRENCY',
-      sp.[SEP_KGS] AS 'SEP KGS',
-      ss.[SEP_SQ_MTS_] AS 'SEP SQ MTS ',
-      ss.[SEP_MTR] AS 'SEP MTR',
-      (sp.[SEP_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'SEP PCS',
-      sp.[SEP_RATE_AS_PER_CURRENCY] AS 'SEP RATE AS PER CURRENCY',
-      sp.[SEP_(SALEABLE_UNITS)] AS 'SEP (SALEABLE UNITS)',
-      sp.[SEPT_USDN] AS 'SEPT USDN',
-      sp.[SEPT_VALUE] AS 'SEPT VALUE',
+      
       ss.[SET_CODE] AS 'SET CODE',
       ss.[SET_FLOAT] AS 'SET FLOAT',
       ss.[SET/PCS/PP] AS 'SET/PCS/PP',
       ss.[SIZE] AS 'SIZE',
       ss.[STORE_FORMAT] AS 'STORE FORMAT',
-      ss.[TEAM_LEADER] AS 'TEAM LEADER',
+
       ss.[TERMS_FOB/CIF] AS 'TERMS FOB/CIF',
       ss.[USDN/KGS] AS 'USDN/KGS',
       ss.[UNIT_OF_SPEC] AS 'UNIT OF SPEC',
@@ -281,10 +310,14 @@ router.get('/getPublishedData', (req, res) => {
       
       ss.[NO_OF_SHADES] AS 'NO OF SHADES',
       ss.[YEARLY_UVR] AS 'YEARLY UVR',
-      ss.[PRODUCT_CAT] AS 'PRODUCT CAT',
-      ss.[PRODUCT_SUBCAT] AS 'PRODUCT SUBCAT',
-      ss.[PLANT] AS 'PLANT',
-      ss.[SR_NO] AS 'SR NO',
+
+    (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] + sp.[MARCH_(SALEABLE_UNITS)]) as 'Total Saleable Unit',
+      (sp.[APRIL_VALUE] + sp.[MAY_VALUE] + sp.[JUNE_VALUE] + sp.[JULY_VALUE] + sp.[AUG_VALUE] + sp.[SEPT_VALUE] + sp.[OCT_(VALUE)] + sp.[NOV_VALUE] + sp.[DEC_VALUE] + sp.[JAN_VALUE] + sp.[FEB_VALUE] + sp.[MAR_VALUE]) as 'Total Value' ,
+      (sp.[APRIL_USDN] + sp.[MAY_USDN] + sp.[JUNE_USDN] + sp.[JULY_USDN] + sp.[AUG_USDN] + sp.[SEPT_USDN] + sp.[OCTOBER_(USDN)] + sp.[NOV_USDN] + sp.[DEC_USDN] + sp.[JAN_USDN] + sp.[FEB_USDN] + sp.[MAR_USDN]) as 'Total USDN' ,
+      (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] +sp.[MARCH_(SALEABLE_UNITS)]) as 'Total PCS',
+      (sp.[APRIL_KGS] + sp.[MAY_KGS] + sp.[JUNE_KGS] + sp.[JULY_KGS] + sp.[AUG_KGS] + sp.[SEP_KGS] + sp.[OCT_KGS] + sp.[NOV_KGS] + sp.[DEC_KGS] + sp.[JAN_KGS] + sp.[FEB_KGS] + sp.[MAR_KGS]) as 'Total KGS',
+      (sp.[APRIL_(SQ_MTR)] + sp.[MAY_(SQ_MTS)] + sp.[JUNE_(SQ_MTS)] + sp.[JULY_(SQ_MTS)] + sp.[AUGUST_(SQ_MTS)] + sp.[SEP_SQ_MTS_] + sp.[OCT_SQ_MTS] + sp.[NOVEMBER_(SQ_MTS)] + sp.[DECEMBER_(SQ_MTS)] + sp.[JANUARY_(SQ_MTS)] + sp.[FEBRUARY(SQ_MTS)] + sp.[MARCH(SQ_MTS)]) as 'TOTAL SQR MTRS',
+      
       ss.[SHEARING] AS 'SHEARING'
       FROM   salesplan_publish AS sp
             INNER JOIN SALESPLAN_SIMULATION AS ss
@@ -292,212 +325,242 @@ router.get('/getPublishedData', (req, res) => {
                         AND sp.[product_cat] in (${newList})`
     }
     else {
-      query += `
-      SELECT
-      sp.[VERSION_NO] AS 'versionNo',
-      sp.[UNIQUE_IDENTIFICATION_NO] AS 'UNIQUE IDENTIFICATION NO',
-      (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] + sp.[MARCH_(SALEABLE_UNITS)]) as 'Total Saleable Unit',
-      (sp.[APRIL_VALUE] + sp.[MAY_VALUE] + sp.[JUNE_VALUE] + sp.[JULY_VALUE] + sp.[AUG_VALUE] + sp.[SEPT_VALUE] + sp.[OCT_(VALUE)] + sp.[NOV_VALUE] + sp.[DEC_VALUE] + sp.[JAN_VALUE] + sp.[FEB_VALUE] + sp.[MAR_VALUE]) as 'Total Value' ,
-      (sp.[APRIL_USDN] + sp.[MAY_USDN] + sp.[JUNE_USDN] + sp.[JULY_USDN] + sp.[AUG_USDN] + sp.[SEPT_USDN] + sp.[OCTOBER_(USDN)] + sp.[NOV_USDN] + sp.[DEC_USDN] + sp.[JAN_USDN] + sp.[FEB_USDN] + sp.[MAR_USDN]) as 'Total USDN' ,
-      (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] +sp.[MARCH_(SALEABLE_UNITS)]) as 'Total PCS',
-      (sp.[APRIL_KGS] + sp.[MAY_KGS] + sp.[JUNE_KGS] + sp.[JULY_KGS] + sp.[AUG_KGS] + sp.[SEP_KGS] + sp.[OCT_KGS] + sp.[NOV_KGS] + sp.[DEC_KGS] + sp.[JAN_KGS] + sp.[FEB_KGS] + sp.[MAR_KGS]) as 'Total KGS',
-      (sp.[APRIL_(SQ_MTR)] + sp.[MAY_(SQ_MTS)] + sp.[JUNE_(SQ_MTS)] + sp.[JULY_(SQ_MTS)] + sp.[AUGUST_(SQ_MTS)] + sp.[SEP_SQ_MTS_] + sp.[OCT_SQ_MTS] + sp.[NOVEMBER_(SQ_MTS)] + sp.[DECEMBER_(SQ_MTS)] + sp.[JANUARY_(SQ_MTS)] + sp.[FEBRUARY(SQ_MTS)] + sp.[MARCH(SQ_MTS)]) as 'TOTAL SQR MTRS',
+      query += `SELECT
+          sp.[VERSION_NO] AS 'versionNo',
+          sp.[UNIQUE_IDENTIFICATION_NO] AS 'UNIQUE IDENTIFICATION NO',
+          ss.[PLANT] AS 'PLANT',
+        ss.[PRODUCT_CAT] AS 'PRODUCT CAT',
+        ss.[PRODUCT_SUBCAT] AS 'PRODUCT SUBCAT',
+          ss.[SR_NO] AS 'SR NO',
+        ss.[REGION] AS 'REGION',
+        ss.[PROGRAM] AS 'PROGRAM',
+          ss.[PROGRAM_CODE__↑] AS 'PROGRAM CODE ↑',
+        ss.[END_CUSTOMER_CODE] AS 'END CUSTOMER CODE',
+          sp.[END_CUSTOMER_NAME] AS 'END CUSTOMER NAME',
+        ss.[MATCODE] AS 'MATCODE',
+        ss.[TEAM_LEADER] AS 'TEAM LEADER',
+        ss.[MATERIAL_DESCRIPTION] AS 'MATERIAL DESCRIPTION',
+          ss.[MERCHANT] AS 'MERCHANT',
+          ss.[PCS_IN_SET] AS 'PCS IN SET',
+        
+        
+        sp.[APR_(SALEABLE_UNITS)] AS 'APR (SALEABLE UNITS)',
+          (sp.[APR_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'APRIL PCS',
+        sp.[APR_RATE_AS_PER_CURRENCY] AS 'APR RATE AS PER CURRENCY',
+          sp.[APRIL_KGS] AS 'APRIL KGS',
+          sp.[APRIL_USDN] AS 'APRIL USDN',
+          sp.[APRIL_VALUE] AS 'APRIL VALUE',
+          sp.[AUG_KGS] AS 'AUG KGS',
+          ss.[APRIL_(SQ_MTR)] AS 'APRIL (SQ MTR)',
+          ss.[APR_MTR] AS 'APR MTR',
+          ss.[APRIL(TUFTING_KGS)] AS 'APRIL(TUFTING KGS)',
+          
+        
+        sp.[MAY_KGS] AS 'MAY KGS',
+          ss.[MAY_(SQ_MTS)] AS 'MAY (SQ MTS)',
+          (sp.[MAY_(SALEABLE_UNITS)]* ss.[NO_OF_PCS_IN_SET]) AS 'MAY(PCS)',
+          sp.[MAY_RATE_AS_PER_CURRENCY] AS 'MAY RATE AS PER CURRENCY',
+          sp.[MAY_(SALEABLE_UNITS)] AS 'MAY (SALEABLE UNITS)',
+          sp.[MAY_USDN] AS 'MAY USDN',
+          sp.[MAY_VALUE] AS 'MAY VALUE',
+        
+        
+        sp.[JUNE_KGS] AS 'JUNE KGS',
+          ss.[JUNE_(SQ_MTS)] AS 'JUNE (SQ MTS)',
+          ss.[JUNE_MTR] AS 'JUNE MTR',
+          (sp.[JUN_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JUNE(PCS)',
+          sp.[JUN_RATE_AS_PER_CURRENCY] AS 'JUN RATE AS PER CURRENCY',
+          sp.[JUN_(SALEABLE_UNITS)] AS 'JUN (SALEABLE UNITS)',
+          sp.[JUNE_USDN] AS 'JUNE USDN',
+          sp.[JUNE_VALUE] AS 'JUNE VALUE',
+        
+        
+        sp.[JULY_KGS] AS 'JULY KGS',
+          ss.[JULY_(SQ_MTS)] AS 'JULY (SQ MTS)',
+          ss.[JUL_MTR] AS 'JUL MTR',
+          (sp.[JULY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JULY(PCS)',
+          sp.[JUL_RATE_AS_PER_CURRENCY] AS 'JUL RATE AS PER CURRENCY',
+          sp.[JULY_(SALEABLE_UNITS)] AS 'JULY (SALEABLE UNITS)',
+          sp.[JULY_USDN] AS 'JULY USDN',
+          sp.[JULY_VALUE] AS 'JULY VALUE',
+        
+        
+          sp.[AUG_RATE_AS_PER_CURRENCY] AS 'AUG RATE AS PER CURRENCY',
+          sp.[AUGUST_(SALEABLE_UNITS)] AS 'AUGUST (SALEABLE UNITS)',
+          ss.[AUGUST_(SQ_MTS)] AS 'AUGUST (SQ MTS)',
+          ss.[AUG_MTR] AS 'AUG MTR',
+          ss.[AUG_(TUFTING_KGS)] AS 'AUG (TUFTING KGS)',
+          (sp.[AUGUST_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'AUGUST PCS',
+          sp.[AUG_USDN] AS 'AUG USDN',
+          sp.[AUG_VALUE] AS 'AUG VALUE',
+          
+        
+        sp.[SEP_KGS] AS 'SEP KGS',
+          ss.[SEP_SQ_MTS_] AS 'SEP SQ MTS ',
+          ss.[SEP_MTR] AS 'SEP MTR',
+          (sp.[SEP_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'SEP PCS',
+          sp.[SEP_RATE_AS_PER_CURRENCY] AS 'SEP RATE AS PER CURRENCY',
+          sp.[SEP_(SALEABLE_UNITS)] AS 'SEP (SALEABLE UNITS)',
+          sp.[SEPT_USDN] AS 'SEPT USDN',
+          sp.[SEPT_VALUE] AS 'SEPT VALUE',
+        
+        
+        sp.[OCT_KGS] AS 'OCT KGS',
+          ss.[OCT_SQ_MTS] AS 'OCT SQ MTS',
+          ss.[OCT_MTR] AS 'OCT MTR',
+          sp.[OCT_(SALEABLE_UNIT)] AS 'OCT (SALEABLE UNIT)',
+          sp.[OCT_RATE_AS_PER_CURRENCY] AS 'OCT RATE AS PER CURRENCY',
+          (sp.[OCT_(SALEABLE_UNIT)] * ss.[NO_OF_PCS_IN_SET]) AS 'OCTOBER(PCS)',
+          sp.[OCTOBER_(USDN)] AS 'OCTOBER (USDN)',
+          sp.[OCT_(VALUE)] AS 'OCT (VALUE)',
+        
+        
+        sp.[NOV_KGS] AS 'NOV KGS',
+          ss.[NOVEMBER_(SQ_MTS)] AS 'NOVEMBER (SQ MTS)',
+          ss.[NOV_MTR] AS 'NOV MTR',
+          (sp.[NOVEMBER_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'NOVEMBER(PCS)',
+          sp.[NOV_RATE_AS_PER_CURRENCY] AS 'NOV RATE AS PER CURRENCY',
+          sp.[NOVEMBER_(SALEABLE_UNITS)] AS 'NOVEMBER (SALEABLE UNITS)',
+          sp.[NOV_USDN] AS 'NOV USDN',
+          sp.[NOV_VALUE] AS 'NOV VALUE',
+        
+        
+        sp.[DEC_KGS] AS 'DEC KGS',
+          (sp.[DECEMBER_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'DECEMBER PCS',
+          ss.[DECEMBER(TOTAL_KGS)] AS 'DECEMBER(TOTAL KGS)',
+          ss.[DECEMBER_(SQ_MTS)] AS 'DECEMBER (SQ MTS)',
+          ss.[DECEMBER(TUFTING_KGS)] AS 'DECEMBER(TUFTING KGS)',
+          sp.[DEC_RATE_AS_PER_CURRENCY] AS 'DEC RATE AS PER CURRENCY',
+          sp.[DECEMBER_(SALEABLE_UNITS)] AS 'DECEMBER (SALEABLE UNITS)',
+          sp.[DEC_USDN] AS 'DEC USDN',
+          sp.[DEC_VALUE] AS 'DEC VALUE',
+        
+        
+        sp.[JAN_KGS] AS 'JAN KGS',
+          ss.[JANUARY_(SQ_MTS)] AS 'JANUARY (SQ MTS)',
+          ss.[JAN_MTR] AS 'JAN MTR',
+          ss.[JANUARY(TUFTING_KGS)] AS 'JANUARY(TUFTING KGS)',
+          sp.[JAN_RATE_AS_PER_CURRENCY] AS 'JAN RATE AS PER CURRENCY',
+          sp.[JANUARY_(SALEABLE_UNITS)] AS 'JANUARY (SALEABLE UNITS)',
+          (sp.[JANUARY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JANUARY PCS',
+          sp.[JAN_USDN] AS 'JAN USDN',
+          sp.[JAN_VALUE] AS 'JAN VALUE',
+        
+        
+        
+        sp.[FEB_KGS] AS 'FEB KGS',
+          ss.[FEBRUARY(TOTAL_KGS)] AS 'FEBRUARY(TOTAL KGS)',
+          ss.[FEBRUARY(SQ_MTS)] AS 'FEBRUARY(SQ MTS)',
+          ss.[FEB_MTR] AS 'FEB MTR',
+          sp.[FEB_RATE_AS_PER_CURRENCY] AS 'FEB RATE AS PER CURRENCY',
+          ss.[FEBRUARY(TUFTING_KGS)] AS 'FEBRUARY(TUFTING KGS)',
+          sp.[FEBRUARY_(SALEABLE_UNITS)] AS 'FEBRUARY (SALEABLE UNITS)',
+          (sp.[FEBRUARY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'FEBRUARY PCS',
+          sp.[FEB_USDN] AS 'FEB USDN',
+          sp.[FEB_VALUE] AS 'FEB VALUE',
+        
+        
+        sp.[MAR_KGS] AS 'MAR KGS',
+          ss.[MARCH(SQ_MTS)] AS 'MARCH(SQ MTS)',
+          ss.[MAR_MTR] AS 'MAR MTR',
+          sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH(PCS)',
+      
+          sp.[MAR_RATE_AS_PER_CURRENCY] AS 'MAR RATE AS PER CURRENCY',
+          sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH (SALEABLE UNITS)',
+          sp.[MAR_USDN] AS 'MAR USDN',
+          sp.[MAR_VALUE] AS 'MAR VALUE',
+        
+        
+        
+        ss.[BILLING(WUSA/WUK/DIRECT)] AS 'BILLING(WUSA/WUK/DIRECT)',
+          ss.[BRAND_NAME] AS 'BRAND NAME',
+          ss.[BRAND_TYPE_:_OWN_/_RETAILER_LICENCE_/_WE] AS 'BRAND TYPE : OWN / RETAILER LICENCE / WE',
+          ss.[CHANNEL] AS 'CHANNEL',
+          ss.[DYEING/_WASHING] AS 'DYEING/ WASHING',
+          ss.[EMB(Y/_N)] AS 'EMB(Y/ N)',
+        
+          ss.[ENQ_STATUS(LIKELY/MOST_LIKELY_/CONFIRME] AS 'ENQ STATUS(LIKELY/MOST LIKELY /CONFIRME)',
+          ss.[EXPORT/_DOMESTIC] AS 'EXPORT/ DOMESTIC',
+          
+          ss.[GR._YARN_1] AS 'GR. YARN 1',
+          ss.[GROUND_1_PLY] AS 'GROUND 1 PLY',
+          ss.[GROUND_2_PLY] AS 'GROUND 2 PLY',
+          ss.[GROUND_COUNT] AS 'GROUND COUNT',
+          ss.[GROUND_COUNT_2] AS 'GROUND COUNT 2',
+          ss.[GROUND_TYPE_1] AS 'GROUND TYPE 1',
+          ss.[GROUND_TYPE_2] AS 'GROUND TYPE 2',
+          ss.[GROUND_YARN_2_GMS] AS 'GROUND YARN 2 GMS',
+          ss.[GROUND_YARN_GMS] AS 'GROUND YARN GMS',
+          ss.[GSM] AS 'GSM',
+          
+          ss.[INNOVATION_TYPE] AS 'INNOVATION TYPE',
+          ss.[INNOVATION(YES/_NO)] AS 'INNOVATION(YES/ NO)',
+          
+          
+          
+        
+          ss.[LIKE_TO_LIKE/NEW] AS 'LIKE TO LIKE/NEW',
+          ss.[LOGO] AS 'LOGO',
+          ss.[LOOM] AS 'LOOM',
+          
+          
 
-      sp.[APRIL_KGS] AS 'APRIL KGS',
+          
+          ss.[PILE_1_PLY] AS 'PILE 1 PLY',
+          ss.[PILE_COUNT_1] AS 'PILE COUNT 1',
+          ss.[PILE_COUNT_2] AS 'PILE COUNT 2',
+          ss.[PILE_TYPE_1] AS 'PILE TYPE 1',
+          ss.[PILE_TYPE_2] AS 'PILE TYPE 2',
+          ss.[PILE_YARN_2_GMS] AS 'PILE YARN 2 GMS',
+          ss.[PILE_YARN_GMS] AS 'PILE YARN GMS',
+          ss.[PILE_YN._1] AS 'PILE YN. 1',
+          ss.[PIVOT_KEY] AS 'PIVOT KEY',
+        
+          ss.[PROGRAM_CODE_UPDATED] AS 'PROGRAM CODE UPDATED',
       
-      sp.[APR_RATE_AS_PER_CURRENCY] AS 'APR RATE AS PER CURRENCY',
-      sp.[APR_(SALEABLE_UNITS)] AS 'APR (SALEABLE UNITS)',
-      (sp.[APR_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'APRIL PCS',
-      sp.[APRIL_USDN] AS 'APRIL USDN',
-      sp.[APRIL_VALUE] AS 'APRIL VALUE',
-      sp.[AUG_KGS] AS 'AUG KGS',
-      ss.[APRIL_(SQ_MTR)] AS 'APRIL (SQ MTR)',
-      ss.[APR_MTR] AS 'APR MTR',
-      ss.[APRIL(TUFTING_KGS)] AS 'APRIL(TUFTING KGS)',
+          ss.[REPL_/_PROMO] AS 'REPL / PROMO',
+          ss.[REMARKS] AS 'REMARKS',
+          ss.[SECONDARYBACKING(GSM)] AS 'SECONDARYBACKING(GSM)',
+          ss.[SELLING_CURRENCY] AS 'SELLING CURRENCY',
+          
+          ss.[SET_CODE] AS 'SET CODE',
+          ss.[SET_FLOAT] AS 'SET FLOAT',
+          ss.[SET/PCS/PP] AS 'SET/PCS/PP',
+          ss.[SIZE] AS 'SIZE',
+          ss.[STORE_FORMAT] AS 'STORE FORMAT',
       
-      sp.[AUG_RATE_AS_PER_CURRENCY] AS 'AUG RATE AS PER CURRENCY',
-      sp.[AUGUST_(SALEABLE_UNITS)] AS 'AUGUST (SALEABLE UNITS)',
-      ss.[AUGUST_(SQ_MTS)] AS 'AUGUST (SQ MTS)',
-      ss.[AUG_MTR] AS 'AUG MTR',
-      ss.[AUG_(TUFTING_KGS)] AS 'AUG (TUFTING KGS)',
-
-      (sp.[AUGUST_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'AUGUST PCS',
-      
-      sp.[AUG_USDN] AS 'AUG USDN',
-      sp.[AUG_VALUE] AS 'AUG VALUE',
-      ss.[BILLING(WUSA/WUK/DIRECT)] AS 'BILLING(WUSA/WUK/DIRECT)',
-      ss.[BRAND_NAME] AS 'BRAND NAME',
-      ss.[BRAND_TYPE_:_OWN_/_RETAILER_LICENCE_/_WE] AS 'BRAND TYPE : OWN / RETAILER LICENCE / WE',
-      ss.[CHANNEL] AS 'CHANNEL',
-      sp.[DEC_KGS] AS 'DEC KGS',
-  
-      (sp.[DECEMBER_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'DECEMBER PCS',
-      ss.[DECEMBER(TOTAL_KGS)] AS 'DECEMBER(TOTAL KGS)',
-      ss.[DECEMBER_(SQ_MTS)] AS 'DECEMBER (SQ MTS)',
-      ss.[DECEMBER(TUFTING_KGS)] AS 'DECEMBER(TUFTING KGS)',
-      sp.[DEC_RATE_AS_PER_CURRENCY] AS 'DEC RATE AS PER CURRENCY',
-      sp.[DECEMBER_(SALEABLE_UNITS)] AS 'DECEMBER (SALEABLE UNITS)',
-      sp.[DEC_USDN] AS 'DEC USDN',
-      sp.[DEC_VALUE] AS 'DEC VALUE',
-      ss.[DYEING/_WASHING] AS 'DYEING/ WASHING',
-      ss.[EMB(Y/_N)] AS 'EMB(Y/ N)',
-      ss.[END_CUSTOMER_CODE] AS 'END CUSTOMER CODE',
-      sp.[END_CUSTOMER_NAME] AS 'END CUSTOMER NAME',
-      ss.[ENQ_STATUS(LIKELY/MOST_LIKELY_/CONFIRME] AS 'ENQ STATUS(LIKELY/MOST LIKELY /CONFIRME)',
-      ss.[EXPORT/_DOMESTIC] AS 'EXPORT/ DOMESTIC',
-      sp.[FEB_KGS] AS 'FEB KGS',
-
-      ss.[FEBRUARY(TOTAL_KGS)] AS 'FEBRUARY(TOTAL KGS)',
-      ss.[FEBRUARY(SQ_MTS)] AS 'FEBRUARY(SQ MTS)',
-      ss.[FEB_MTR] AS 'FEB MTR',
-      sp.[FEB_RATE_AS_PER_CURRENCY] AS 'FEB RATE AS PER CURRENCY',
-      ss.[FEBRUARY(TUFTING_KGS)] AS 'FEBRUARY(TUFTING KGS)',
-      sp.[FEBRUARY_(SALEABLE_UNITS)] AS 'FEBRUARY (SALEABLE UNITS)',
-      (sp.[FEBRUARY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'FEBRUARY PCS',
-      sp.[FEB_USDN] AS 'FEB USDN',
-      sp.[FEB_VALUE] AS 'FEB VALUE',
-      ss.[GR._YARN_1] AS 'GR. YARN 1',
-      ss.[GROUND_1_PLY] AS 'GROUND 1 PLY',
-      ss.[GROUND_2_PLY] AS 'GROUND 2 PLY',
-      ss.[GROUND_COUNT] AS 'GROUND COUNT',
-      ss.[GROUND_COUNT_2] AS 'GROUND COUNT 2',
-      ss.[GROUND_TYPE_1] AS 'GROUND TYPE 1',
-      ss.[GROUND_TYPE_2] AS 'GROUND TYPE 2',
-      ss.[GROUND_YARN_2_GMS] AS 'GROUND YARN 2 GMS',
-      ss.[GROUND_YARN_GMS] AS 'GROUND YARN GMS',
-      ss.[GSM] AS 'GSM',
-      
-      ss.[INNOVATION_TYPE] AS 'INNOVATION TYPE',
-      ss.[INNOVATION(YES/_NO)] AS 'INNOVATION(YES/ NO)',
-      sp.[JAN_KGS] AS 'JAN KGS',
-      ss.[JANUARY_(SQ_MTS)] AS 'JANUARY (SQ MTS)',
-      ss.[JAN_MTR] AS 'JAN MTR',
-      ss.[JANUARY(TUFTING_KGS)] AS 'JANUARY(TUFTING KGS)',
-      sp.[JAN_RATE_AS_PER_CURRENCY] AS 'JAN RATE AS PER CURRENCY',
-      sp.[JANUARY_(SALEABLE_UNITS)] AS 'JANUARY (SALEABLE UNITS)',
-      (sp.[JANUARY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JANUARY PCS',
-      sp.[JAN_USDN] AS 'JAN USDN',
-      sp.[JAN_VALUE] AS 'JAN VALUE',
-      sp.[JULY_KGS] AS 'JULY KGS',
-      ss.[JULY_(SQ_MTS)] AS 'JULY (SQ MTS)',
-      ss.[JUL_MTR] AS 'JUL MTR',
-      (sp.[JULY_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JULY(PCS)',
-    
-      sp.[JUL_RATE_AS_PER_CURRENCY] AS 'JUL RATE AS PER CURRENCY',
-      sp.[JULY_(SALEABLE_UNITS)] AS 'JULY (SALEABLE UNITS)',
-      sp.[JULY_USDN] AS 'JULY USDN',
-      sp.[JULY_VALUE] AS 'JULY VALUE',
-      sp.[JUNE_KGS] AS 'JUNE KGS',
-      ss.[JUNE_(SQ_MTS)] AS 'JUNE (SQ MTS)',
-      ss.[JUNE_MTR] AS 'JUNE MTR',
-      (sp.[JUN_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'JUNE(PCS)',
-     
-      sp.[JUN_RATE_AS_PER_CURRENCY] AS 'JUN RATE AS PER CURRENCY',
-      sp.[JUN_(SALEABLE_UNITS)] AS 'JUN (SALEABLE UNITS)',
-      sp.[JUNE_USDN] AS 'JUNE USDN',
-      sp.[JUNE_VALUE] AS 'JUNE VALUE',
-    
-      ss.[LIKE_TO_LIKE/NEW] AS 'LIKE TO LIKE/NEW',
-      ss.[LOGO] AS 'LOGO',
-      ss.[LOOM] AS 'LOOM',
-      
-      sp.[MAR_KGS] AS 'MAR KGS',
-      ss.[MARCH(SQ_MTS)] AS 'MARCH(SQ MTS)',
-      ss.[MAR_MTR] AS 'MAR MTR',
-      sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH(PCS)',
-  
-      sp.[MAR_RATE_AS_PER_CURRENCY] AS 'MAR RATE AS PER CURRENCY',
-      sp.[MARCH_(SALEABLE_UNITS)] AS 'MARCH (SALEABLE UNITS)',
-      sp.[MAR_USDN] AS 'MAR USDN',
-      sp.[MAR_VALUE] AS 'MAR VALUE',
-      ss.[MATCODE] AS 'MATCODE',
-      ss.[MATERIAL_DESCRIPTION] AS 'MATERIAL DESCRIPTION',
-      sp.[MAY_KGS] AS 'MAY KGS',
-      ss.[MAY_(SQ_MTS)] AS 'MAY (SQ MTS)',
-      (sp.[MAY_(SALEABLE_UNITS)]* ss.[NO_OF_PCS_IN_SET]) AS 'MAY(PCS)',
-  
-      sp.[MAY_RATE_AS_PER_CURRENCY] AS 'MAY RATE AS PER CURRENCY',
-      sp.[MAY_(SALEABLE_UNITS)] AS 'MAY (SALEABLE UNITS)',
-      sp.[MAY_USDN] AS 'MAY USDN',
-      sp.[MAY_VALUE] AS 'MAY VALUE',
-      ss.[MERCHANT] AS 'MERCHANT',
-      sp.[NOV_KGS] AS 'NOV KGS',
-      ss.[NOVEMBER_(SQ_MTS)] AS 'NOVEMBER (SQ MTS)',
-      ss.[NOV_MTR] AS 'NOV MTR',
-      (sp.[NOVEMBER_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'NOVEMBER(PCS)',
-      
-      sp.[NOV_RATE_AS_PER_CURRENCY] AS 'NOV RATE AS PER CURRENCY',
-      sp.[NOVEMBER_(SALEABLE_UNITS)] AS 'NOVEMBER (SALEABLE UNITS)',
-      sp.[NOV_USDN] AS 'NOV USDN',
-      sp.[NOV_VALUE] AS 'NOV VALUE',
-      sp.[OCT_KGS] AS 'OCT KGS',
-      ss.[OCT_SQ_MTS] AS 'OCT SQ MTS',
-      ss.[OCT_MTR] AS 'OCT MTR',
-      sp.[OCT_(SALEABLE_UNIT)] AS 'OCT (SALEABLE UNIT)',
-      sp.[OCT_RATE_AS_PER_CURRENCY] AS 'OCT RATE AS PER CURRENCY',
-      (sp.[OCT_(SALEABLE_UNIT)] * ss.[NO_OF_PCS_IN_SET]) AS 'OCTOBER(PCS)',
-      sp.[OCTOBER_(USDN)] AS 'OCTOBER (USDN)',
-      sp.[OCT_(VALUE)] AS 'OCT (VALUE)',
-      ss.[PCS_IN_SET] AS 'PCS IN SET',
-      ss.[PILE_1_PLY] AS 'PILE 1 PLY',
-      ss.[PILE_COUNT_1] AS 'PILE COUNT 1',
-      ss.[PILE_COUNT_2] AS 'PILE COUNT 2',
-      ss.[PILE_TYPE_1] AS 'PILE TYPE 1',
-      ss.[PILE_TYPE_2] AS 'PILE TYPE 2',
-      ss.[PILE_YARN_2_GMS] AS 'PILE YARN 2 GMS',
-      ss.[PILE_YARN_GMS] AS 'PILE YARN GMS',
-      ss.[PILE_YN._1] AS 'PILE YN. 1',
-      ss.[PIVOT_KEY] AS 'PIVOT KEY',
-      ss.[PROGRAM] AS 'PROGRAM',
-      ss.[PROGRAM_CODE__↑] AS 'PROGRAM CODE ↑',
-      ss.[PROGRAM_CODE_UPDATED] AS 'PROGRAM CODE UPDATED',
-      ss.[REGION] AS 'REGION',
-      ss.[REPL_/_PROMO] AS 'REPL / PROMO',
-      ss.[REMARKS] AS 'REMARKS',
-      ss.[SECONDARYBACKING(GSM)] AS 'SECONDARYBACKING(GSM)',
-      ss.[SELLING_CURRENCY] AS 'SELLING CURRENCY',
-      sp.[SEP_KGS] AS 'SEP KGS',
-      ss.[SEP_SQ_MTS_] AS 'SEP SQ MTS ',
-      ss.[SEP_MTR] AS 'SEP MTR',
-      (sp.[SEP_(SALEABLE_UNITS)] * ss.[NO_OF_PCS_IN_SET]) AS 'SEP PCS',
-      sp.[SEP_RATE_AS_PER_CURRENCY] AS 'SEP RATE AS PER CURRENCY',
-      sp.[SEP_(SALEABLE_UNITS)] AS 'SEP (SALEABLE UNITS)',
-      sp.[SEPT_USDN] AS 'SEPT USDN',
-      sp.[SEPT_VALUE] AS 'SEPT VALUE',
-      ss.[SET_CODE] AS 'SET CODE',
-      ss.[SET_FLOAT] AS 'SET FLOAT',
-      ss.[SET/PCS/PP] AS 'SET/PCS/PP',
-      ss.[SIZE] AS 'SIZE',
-      ss.[STORE_FORMAT] AS 'STORE FORMAT',
-      ss.[TEAM_LEADER] AS 'TEAM LEADER',
-      ss.[TERMS_FOB/CIF] AS 'TERMS FOB/CIF',
-      ss.[USDN/KGS] AS 'USDN/KGS',
-      ss.[UNIT_OF_SPEC] AS 'UNIT OF SPEC',
-      
-      ss.[WEFT_1_PLY] AS 'WEFT 1 PLY',
-      ss.[WEFT_COUNT_1] AS 'WEFT COUNT 1',
-      ss.[WEFT_COUNT_2] AS 'WEFT COUNT 2',
-      ss.[WEFT_TYPE_1] AS 'WEFT TYPE 1',
-      ss.[WEFT_TYPE_2] AS 'WEFT TYPE 2',
-      ss.[WEFT_YARN_1_GMS] AS 'WEFT YARN 1 GMS',
-      ss.[WEFT_YARN_2_GMS] AS 'WEFT YARN 2 GMS',
-      ss.[WELSPUN_UK/US_SALES_REP] AS 'WELSPUN UK/US SALES REP',
-      ss.[WELTRACK(_YES/_NO)] AS 'WELTRACK( YES/ NO)',
-      ss.[WT/PC] AS 'WT/PC',
-      ss.[WUSA/_WUK_WAREHOUSE] AS 'WUSA/ WUK WAREHOUSE',
-      
-      ss.[NO_OF_SHADES] AS 'NO OF SHADES',
-      ss.[YEARLY_UVR] AS 'YEARLY UVR',
-      ss.[PRODUCT_CAT] AS 'PRODUCT CAT',
-      ss.[PRODUCT_SUBCAT] AS 'PRODUCT SUBCAT',
-      ss.[PLANT] AS 'PLANT',
-      ss.[SR_NO] AS 'SR NO',
-      ss.[SHEARING] AS 'SHEARING'
-      FROM   salesplan_publish AS sp
-            INNER JOIN SALESPLAN_SIMULATION AS ss
-                    ON sp.[unique_identification_no] = ss.[unique_identification_no]
-                        AND sp.[product_cat] in (${newList}) AND (sp.[VERSION_NO] like '%${req.query.teamLeader}%' OR sp.[TEAM_LEADER] like '%${req.query.teamLeader}%')
-        `;
+          ss.[TERMS_FOB/CIF] AS 'TERMS FOB/CIF',
+          ss.[USDN/KGS] AS 'USDN/KGS',
+          ss.[UNIT_OF_SPEC] AS 'UNIT OF SPEC',
+          
+          ss.[WEFT_1_PLY] AS 'WEFT 1 PLY',
+          ss.[WEFT_COUNT_1] AS 'WEFT COUNT 1',
+          ss.[WEFT_COUNT_2] AS 'WEFT COUNT 2',
+          ss.[WEFT_TYPE_1] AS 'WEFT TYPE 1',
+          ss.[WEFT_TYPE_2] AS 'WEFT TYPE 2',
+          ss.[WEFT_YARN_1_GMS] AS 'WEFT YARN 1 GMS',
+          ss.[WEFT_YARN_2_GMS] AS 'WEFT YARN 2 GMS',
+          ss.[WELSPUN_UK/US_SALES_REP] AS 'WELSPUN UK/US SALES REP',
+          ss.[WELTRACK(_YES/_NO)] AS 'WELTRACK( YES/ NO)',
+          ss.[WT/PC] AS 'WT/PC',
+          ss.[WUSA/_WUK_WAREHOUSE] AS 'WUSA/ WUK WAREHOUSE',
+          
+          ss.[NO_OF_SHADES] AS 'NO OF SHADES',
+          ss.[YEARLY_UVR] AS 'YEARLY UVR',
+        
+        (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] + sp.[MARCH_(SALEABLE_UNITS)]) as 'Total Saleable Unit',
+          (sp.[APRIL_VALUE] + sp.[MAY_VALUE] + sp.[JUNE_VALUE] + sp.[JULY_VALUE] + sp.[AUG_VALUE] + sp.[SEPT_VALUE] + sp.[OCT_(VALUE)] + sp.[NOV_VALUE] + sp.[DEC_VALUE] + sp.[JAN_VALUE] + sp.[FEB_VALUE] + sp.[MAR_VALUE]) as 'Total Value' ,
+          (sp.[APRIL_USDN] + sp.[MAY_USDN] + sp.[JUNE_USDN] + sp.[JULY_USDN] + sp.[AUG_USDN] + sp.[SEPT_USDN] + sp.[OCTOBER_(USDN)] + sp.[NOV_USDN] + sp.[DEC_USDN] + sp.[JAN_USDN] + sp.[FEB_USDN] + sp.[MAR_USDN]) as 'Total USDN' ,
+          (sp.[APR_(SALEABLE_UNITS)] + sp.[MAY_(SALEABLE_UNITS)] + sp.[JUN_(SALEABLE_UNITS)] + sp.[JULY_(SALEABLE_UNITS)] + sp.[AUGUST_(SALEABLE_UNITS)] + sp.[SEP_(SALEABLE_UNITS)] + sp.[OCT_(SALEABLE_UNIT)] + sp.[NOVEMBER_(SALEABLE_UNITS)] + sp.[DECEMBER_(SALEABLE_UNITS)] + sp.[JANUARY_(SALEABLE_UNITS)] + sp.[FEBRUARY_(SALEABLE_UNITS)] +sp.[MARCH_(SALEABLE_UNITS)]) as 'Total PCS',
+          (sp.[APRIL_KGS] + sp.[MAY_KGS] + sp.[JUNE_KGS] + sp.[JULY_KGS] + sp.[AUG_KGS] + sp.[SEP_KGS] + sp.[OCT_KGS] + sp.[NOV_KGS] + sp.[DEC_KGS] + sp.[JAN_KGS] + sp.[FEB_KGS] + sp.[MAR_KGS]) as 'Total KGS',
+          (sp.[APRIL_(SQ_MTR)] + sp.[MAY_(SQ_MTS)] + sp.[JUNE_(SQ_MTS)] + sp.[JULY_(SQ_MTS)] + sp.[AUGUST_(SQ_MTS)] + sp.[SEP_SQ_MTS_] + sp.[OCT_SQ_MTS] + sp.[NOVEMBER_(SQ_MTS)] + sp.[DECEMBER_(SQ_MTS)] + sp.[JANUARY_(SQ_MTS)] + sp.[FEBRUARY(SQ_MTS)] + sp.[MARCH(SQ_MTS)]) as 'TOTAL SQR MTRS',
+          
+          ss.[SHEARING] AS 'SHEARING'
+          FROM   salesplan_publish AS sp
+                INNER JOIN SALESPLAN_SIMULATION AS ss
+                        ON sp.[unique_identification_no] = ss.[unique_identification_no]
+                            AND sp.[product_cat] in (${newList}) AND (sp.[VERSION_NO] like '%${req.query.teamLeader}%' OR sp.[TEAM_LEADER] like '%${req.query.teamLeader}%')
+            `;
     }
 
     // else if (req.query.productName == 'Rugs') {
@@ -1421,7 +1484,7 @@ router.post('/publish-version', async (req, res) => {
     console.log(req.body.dataTableAnnual)
 
     req.body.dataTableAnnual.map(({ customerName, thisYear, productSubCat, plant, region }, index) => {
-      
+
       if (index == 0) {
 
         summaryData += `( 'Keyur Parekh' , '${req.body.publishVersion}' , '${customerName}' , '${thisYear.wtPerPC}' , '${thisYear.program}' , '${thisYear.productCat}' , '${plant}', '${thisYear.matcode}' , '${thisYear.uniqueIdentificationNo}' , '${productSubCat}' , '${thisYear.teamLeader}' , '${region}' , ${thisYear.aprilSaleableUnit} , ${thisYear.aprilQuantity} ,${thisYear.aprilSqMt} , ${thisYear.aprilMt} ,${thisYear.aprilRate},${thisYear.aprilValue},${thisYear.aprilUSDN} , ${thisYear.maySaleableUnit}, ${thisYear.maySqMt} , ${thisYear.mayMt} ,${thisYear.mayRate} , ${thisYear.mayQuantity} ,${thisYear.mayValue},${thisYear.mayUSDN},${thisYear.juneSaleableUnit}, ${thisYear.juneSqMt} , ${thisYear.juneMt} , ${thisYear.juneQuantity} , ${thisYear.juneRate} , ${thisYear.juneValue} , ${thisYear.juneUSDN} , ${thisYear.julySaleableUnit}, ${thisYear.julyMt} , ${thisYear.julySqMt} , ${thisYear.julyQuantity},${thisYear.julyRate},${thisYear.julyValue},${thisYear.julyUSDN},${thisYear.augustSaleableUnit}, ${thisYear.augustSqMt} , ${thisYear.augMt} , ${thisYear.augustQuantity} ,${thisYear.augustRate},${thisYear.augustValue},${thisYear.augustUSDN},${thisYear.septemberSaleableUnit}, ${thisYear.septemberSqMt} , ${thisYear.septemberMt} ,${thisYear.septemberQuantity} ,${thisYear.septemberRate},${thisYear.septemberValue},${thisYear.septemberUSDN},${thisYear.octoberSaleableUnit} , ${thisYear.octSqMt} , ${thisYear.octMt} , ${thisYear.octoberQuantity} ,${thisYear.octoberRate},${thisYear.octoberValue},${thisYear.octoberUSDN},${thisYear.novemberSaleableUnit}, ${thisYear.novSqMt} , ${thisYear.novMt} , ${thisYear.novemberQuantity} ,${thisYear.novemberRate},${thisYear.novemberValue},${thisYear.novemberUSDN},${thisYear.decemberSaleableUnit}, ${thisYear.decSqMt} , ${thisYear.decMt} ,${thisYear.decemberQuantity},${thisYear.decemberRate},${thisYear.decemberValue},${thisYear.decemberUSDN},${thisYear.januarySaleableUnit}, ${thisYear.janSqMt} , ${thisYear.janMt} , ${thisYear.januaryQuantity} ,${thisYear.januaryRate},${thisYear.januaryValue},${thisYear.januaryUSDN},${thisYear.februarySaleableUnit} , ${thisYear.febSqMt} , ${thisYear.febMt} , ${thisYear.februaryQuantity},${thisYear.februaryRate},${thisYear.februaryValue},${thisYear.februaryUSDN},${thisYear.marchSaleableUnit}, ${thisYear.marchSqMt} , ${thisYear.marMt} , ${thisYear.marchQuantity} ,${thisYear.marchRate},${thisYear.marchValue}, ${thisYear.marchUSDN}),`
