@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e2e3b6ef-96ea-4198-9083-8a6b33e76feb/resourceGroups/WTSLDataScience/providers/Microsoft.Web/sites/testAppVivek",
+    "appService.deploySubpath": "."
+}

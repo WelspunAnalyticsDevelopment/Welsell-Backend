@@ -1,0 +1,292 @@
+
+[
+    {
+        "key": "[END_CUSTOMER_NAME]",
+        "value": "customerName"
+    },
+    {
+        "key": "[PROGRAM]",
+        "value" : "program"
+    },
+    {
+        "key" : "[PRODUCT_CAT]",
+        "value" : "productCat"
+    },
+    {
+        "key" : "[PLANT]",
+        "value" : "plant"
+    },
+    {
+        "key" : "[UNIQUE_IDENTIFICATION_NO]",
+        "value" : "uniqueIdentificationNo"
+    },
+    {
+        "key" : "[PRODUCT_SUBCAT]",
+        "value" : "productSubCat"
+    },
+    
+    {
+        "key" : "[TEAM_LEADER]",
+        "value" : "teamLeader"
+    },
+    {
+        "key" : "[REGION]",
+        "value" : "region"
+    },
+    {
+        "key": "[APR_(SALEABLE_UNITS)]",
+        "value": "aprilSaleableUnit"
+    },
+    {
+        "key": "[APRIL_KGS]",
+        "value": "aprilQuantity"
+    },
+    {
+        "key": "[APR_RATE_AS_PER_CURRENCY]",
+        "value": "aprilRate"
+    },
+    {
+        "key": "[APRIL_VALUE]",
+        "value": "aprilValue"
+    },
+    {
+        "key": "[APRIL_USDN]",
+        "value": "aprilUSDN"
+    },
+    
+    {
+        "key": "[MAY_(SALEABLE_UNITS)]",
+        "value": "maySaleableUnit"
+    },
+    {
+        "key": "[MAY_KGS]",
+        "value": "mayQuantity"
+    },
+    {
+        "key": "[MAY_RATE_AS_PER_CURRENCY]",    
+        "value": "mayRate"
+    },
+    {
+        "key": "[MAY_VALUE]",
+        "value": "mayValue"
+    },
+    {
+        "key": "[MAY_USDN]",
+        "value": "mayUSDN"
+    },
+    
+    {
+        "key": "[JUN_(SALEABLE_UNITS)]",
+        "value": "juneSaleableUnit"
+    },
+    {
+        "key": "[JUNE_KGS]",
+        "value": "juneQuantity"
+    },
+    {
+        "key": "[JUN_RATE_AS_PER_CURRENCY]",
+        "value": "juneRate"
+    },
+    {
+        "key": "[JUNE_VALUE]",
+        "value": "juneValue"
+    },
+    {
+        "key": "[JUNE_USDN]",
+        "value": "juneUSDN"
+    },
+    
+    {
+        "key": "[JULY_(SALEABLE_UNITS)]",
+        "value": "julySaleableUnit"
+    },
+    {
+        "key": "[JULY_KGS]",
+        "value": "julyQuantity"
+    },
+    {
+        "key": "[JUL_RATE_AS_PER_CURRENCY]",
+        "value": "julyRate"
+    },
+    {
+        "key": "[JULY_VALUE]",
+        "value": "julyValue"
+    },
+    {
+        "key": "[JULY_USDN]",
+        "value": "julyUSDN"
+    },
+    
+    {
+        "key": "[AUGUST_(SALEABLE_UNITS)]",
+        "value": "augustSaleableUnit"
+    },
+    {
+        "key": "[AUG_KGS]",
+        "value": "augustQuantity"
+    },
+    {
+        "key": "[AUG_RATE_AS_PER_CURRENCY]",
+        "value": "augustRate"
+    },
+    {
+        "key": "[AUG_VALUE]",
+        "value": "augustValue"
+    },
+    
+    {
+        "key": "[AUG_USDN]",
+        "value": "augustUSDN"
+    },
+    {
+        "key": "[SEP_(SALEABLE_UNITS)]",
+        "value": "septemberSaleableUnit"
+    },
+    {
+        "key": "[SEP_KGS]",
+        "value": "septemberQuantity"
+    },
+    {
+        "key": "[SEP_RATE_AS_PER_CURRENCY]",
+        "value": "septemberRate"
+    },
+    {
+        "key": "[SEPT_VALUE]",
+        "value": "septemberValue"
+    },
+    {
+        "key": "[SEPT_USDN]",
+        "value": "septemberUSDN"
+    },
+    
+    {
+        "key": "[OCT_(SALEABLE_UNIT)]",
+        "value": "octoberSaleableUnit"
+    },
+    {
+        "key": "[OCT_KGS]",
+        "value": "octoberQuantity"
+    },
+    {
+        "key": "[OCT_RATE_AS_PER_CURRENCY]",
+        "value": "octoberRate"
+    },
+    {
+        "key": "[OCT_(VALUE)]",
+        "value": "octoberValue"
+    },
+    {
+        "key": "[OCTOBER_(USDN)]",
+        "value": "octoberUSDN"
+    },
+    
+    {
+        "key": "[NOVEMBER_(SALEABLE_UNITS)]",
+        "value": "novemberSaleableUnit"
+    },
+    {
+        "key": "[NOV_KGS]",
+        "value": "novemberQuantity"
+    },
+    {
+        "key": "[NOV_RATE_AS_PER_CURRENCY]",
+        "value": "novemberRate"
+    },
+    {
+        "key": "[NOV_VALUE]",
+        "value": "novemberValue"
+    },
+    {
+        "key": "[NOV_USDN]",
+        "value": "novemberUSDN"
+    },
+    
+    {
+        "key": "[DECEMBER_(SALEABLE_UNITS)]",
+        "value": "decemberSaleableUnit"
+    },
+    {
+        "key": "[DEC_KGS]",
+        "value": "decemberQuantity"
+    },
+    {
+        "key": "[DEC_RATE_AS_PER_CURRENCY]",
+        "value": "decemberRate"
+    },
+    {
+        "key": "[DEC_VALUE]",
+        "value": "decemberValue"
+    },
+    {
+        "key": "[DEC_USDN]",
+        "value": "decemberUSDN"
+    },
+    
+    {
+        "key": "[JANUARY_(SALEABLE_UNITS)]",
+        "value": "januarySaleableUnit"
+    },
+    {
+        "key": "[JAN_KGS]",
+        "value": "januaryQuantity"
+    },
+    {
+        "key": "[JAN_RATE_AS_PER_CURRENCY]",
+        "value": "januaryRate"
+    },
+    {
+        "key": "[JAN_VALUE]",
+        "value": "januaryValue"
+    },
+    {
+        "key": "[JAN_USDN]",
+        "value": "januaryUSDN"
+    },
+    
+    {
+        "key": "[FEBRUARY_(SALEABLE_UNITS)]",
+        "value": "februarySaleableUnit"
+    },
+    {
+        "key": "[FEB_KGS]",
+        "value": "februaryQuantity"
+    },
+    {
+        "key": "[FEB_RATE_AS_PER_CURRENCY]",
+        "value": "februaryRate"
+    },
+    {
+        "key": "[FEB_VALUE]",
+        "value": "februaryValue"
+    },
+    {
+        "key": "[FEB_USDN]",
+        "value": "februaryUSDN"
+    },
+    
+    {
+        "key": "[MARCH_(SALEABLE_UNITS)]",
+        "value": "marchSaleableUnit"
+    },
+    {
+        "key": "[MAR_KGS]",
+        "value": "marchQuantity"
+    },
+    {
+        "key": "[MAR_RATE_AS_PER_CURRENCY]",
+        "value": "marchRate"
+    },
+    {
+        "key": "[MAR_VALUE]",
+        "value": "marchValue"
+    },
+    {
+        "key": "[MAR_USDN]",
+        "value": "marchUSDN"
+    },
+    {
+        "key": "[VERSION_NO]",
+        "value": "versionNo"
+    }
+    
+]
