@@ -563,6 +563,7 @@ router.get('/getPublishedData', (req, res) => {
             `;
     }
 
+    
     // else if (req.query.productName == 'Rugs') {
 
     //   query += `
