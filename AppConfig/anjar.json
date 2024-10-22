@@ -134,7 +134,7 @@
     },
     {
         "key": "[JUN_UVR]",
-        "value": "junUVR"
+        "value": "juneUVR"
     },
     {
         "key": "[JULY_(SALEABLE_UNITS)]",
@@ -199,7 +199,7 @@
     },
     {
         "key": "[AUG_UVR]",
-        "value": "augUVR"
+        "value": "augustUVR"
     },
     {
         "key": "[SEP_(SALEABLE_UNITS)]",
@@ -231,7 +231,7 @@
     },
     {
         "key": "[SEP_UVR]",
-        "value": "sepUVR"
+        "value": "septemberUVR"
     },
     {
         "key": "[OCT_(SALEABLE_UNIT)]",
@@ -263,7 +263,7 @@
     },
     {
         "key": "[OCT_UVR]",
-        "value": "octUVR"
+        "value": "octoberUVR"
     },
     {
         "key": "[NOVEMBER_(SALEABLE_UNITS)]",
@@ -295,7 +295,7 @@
     },
     {
         "key": "[NOV_UVR]",
-        "value": "novUVR"
+        "value": "novemberUVR"
     },
     {
         "key": "[DECEMBER_(SALEABLE_UNITS)]",
@@ -327,7 +327,7 @@
     },
     {
         "key": "[DEC_UVR]",
-        "value": "decUVR"
+        "value": "decemberUVR"
     },
     {
         "key": "[JANUARY_(SALEABLE_UNITS)]",
@@ -359,7 +359,7 @@
     },
     {
         "key": "[JAN_UVR]",
-        "value": "janUVR"
+        "value": "januaryUVR"
     },
 
     {
@@ -392,7 +392,7 @@
     },
     {
         "key": "[FEB_UVR]",
-        "value": "febUVR"
+        "value": "februaryUVR"
     },
 
     {
@@ -425,7 +425,7 @@
     },
     {
         "key": "[MAR_UVR]",
-        "value": "marUVR"
+        "value": "marchUVR"
     },
     {
         "key": "[Q1_UVR]",
